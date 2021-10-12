@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react'
+import SingleMovie from './components/SingleMovie'
+import Landing from './components/Landing'
 
-function App() {
+require('dotenv').config()
+
+
+const App = () => {
+  // URLs
+  const urlObj = {
+    API_KEY:process.env.REACT_APP_API_KEY,
+    BASE_URL:"https://api.themoviedb.org/3",
+    SEARCH_URL:"/search/movie?"
+  }
+
+  const [movies, setMovies] = useState([])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Landing {...urlObj} setMovies={setMovies} movies={movies}/>
+
+      <main>
+        {
+          movies.map(item => <SingleMovie key={item.id} {...item}/>)
+        }
+      </main>
+    </>
+  )
 }
 
-export default App;
+export default App
