@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import SingleMovie from './components/SingleMovie'
 import Landing from './components/Landing'
+import './scrollbar.css'
 
 require('dotenv').config()
 
@@ -14,6 +15,7 @@ const App = () => {
   }
 
   const [movies, setMovies] = useState([])
+  const [page, setPage] = useState(1)
 
   return (
     <>
@@ -21,9 +23,16 @@ const App = () => {
 
       <main>
         {
-          movies.map(item => <SingleMovie key={item.id} {...item}/>)
+          movies.map(item => <SingleMovie key={item.id} {...item} page={page}/>)
         }
       </main>
+
+      {
+        movies.length > 1 && <div id="page-select">
+        {page>1 && <button>	&#60; Prev Page</button>}
+        <button>Next Page	&#62;</button>
+      </div>
+      }
     </>
   )
 }

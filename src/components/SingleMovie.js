@@ -5,6 +5,9 @@ const SingleMovie = ({title,poster_path,vote_average,overview}) => {
         <article>
             <div className="movie-img" style={poster_path ? {backgroundImage:`url(https://image.tmdb.org/t/p/w500${poster_path})`} : {backgroundColor:'gainsboro'}} >
                 <div className="movie-desc">{overview}</div>
+                {
+                    !poster_path && <i className="fas fa-image"></i>
+                }
             </div>
             <div className="movie-info">
                 <h2>{title}</h2>

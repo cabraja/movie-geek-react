@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import axios from 'axios'
 import img from '../assets/krists-luhaers-AtPWnYNDJnM-unsplash.jpg'
 
-const Landing = ({API_KEY,SEARCH_URL,BASE_URL,movies,setMovies}) => {
+const Landing = ({API_KEY,SEARCH_URL,BASE_URL,movies,setMovies,page}) => {
 
     const [searchValue, setSearchValue] = useState("")
     const [h2Style, setH2Style] = useState({})
@@ -10,7 +10,7 @@ const Landing = ({API_KEY,SEARCH_URL,BASE_URL,movies,setMovies}) => {
     const handleSubmit = async(e) => {
         e.preventDefault()
 
-        const res = await axios.get(`${BASE_URL}${SEARCH_URL}${API_KEY}&query=${searchValue}`)
+        const res = await axios.get(`${BASE_URL}${SEARCH_URL}${API_KEY}&query=${searchValue}&page=${page}`)
         console.log(res.data.results)
         setMovies(res.data.results)
 

@@ -188,6 +188,11 @@ article:hover .movie-desc {
 	background-size: cover;
 	border-radius: 10px 10px 0px 0px;
 }
+.movie-img i {
+	color: gray;
+	font-size: 40px;
+	margin-top: 55%;
+}
 
 .movie-info {
 	display: flex;
@@ -208,4 +213,31 @@ article:hover .movie-desc {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
+}
+
+/*
+Page Select
+*/
+
+#page-select {
+	font-size: 3rem;
+	width: fit-content;
+	margin: 20px auto;
+}
+#page-select button {
+	margin: 0px 16px;
+	background-color: rgb(228, 15, 79);
+	color: white;
+	border: none;
+	outline: none;
+	font-size: 24px;
+	padding: 8px 16px;
+	border-radius: 500px;
+	box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.555);
+	transition: 0.2s;
+	cursor: pointer;
+}
+#page-select button:hover {
+	background-color: rgb(231, 14, 43);
+	transition: 0.2s;
 }
