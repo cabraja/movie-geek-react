@@ -1,30 +1,9 @@
 import React,{useState} from 'react'
-import axios from 'axios'
 import img from '../assets/krists-luhaers-AtPWnYNDJnM-unsplash.jpg'
 
-const Landing = ({API_KEY,SEARCH_URL,BASE_URL,movies,setMovies,page}) => {
+const Landing = ({searchValue,setSearchValue,h2Style,setH2Style,handleSubmit}) => {
 
-    const [searchValue, setSearchValue] = useState("")
-    const [h2Style, setH2Style] = useState({})
-
-    const handleSubmit = async(e) => {
-        e.preventDefault()
-
-        const res = await axios.get(`${BASE_URL}${SEARCH_URL}${API_KEY}&query=${searchValue}&page=${page}`)
-        console.log(res.data.results)
-        setMovies(res.data.results)
-
-        // Set new styles
-        const land = document.getElementById("landing")
-        land.style.height = "30vh"
-
-        const newStyle ={
-            display:"none",
-        }
-        setH2Style(newStyle)
-    }
-
-
+    
     return (
         <div id="landing" style={{backgroundImage:`url(${img})`}}>
             <div id="landing-inside">
